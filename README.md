@@ -1,33 +1,33 @@
 Project - Q3 G74
 
-Potential data sources -
+## Potential data sources -
 
-Election data
-  Presidents Project http://www.presidency.ucsb.edu/data.php
-  Atlas of Presidential elections https://uselectionatlas.org/
-  Harvard election data archive https://projects.iq.harvard.edu/eda/home
-  Elections stats - Library of Congress http://www.loc.gov/rr/program/bib/elections/statistics.html
+- Election data
+  - [Presidents Project](http://www.presidency.ucsb.edu/data.php)
+  - [Atlas of Presidential elections] (https://uselectionatlas.org/)
+  - [Harvard election data archive] (https://projects.iq.harvard.edu/eda/home)
+  - [Elections stats - Library of Congress] (http://www.loc.gov/rr/program/bib/elections/statistics.html)
 
-Map gallery - Department of Transportation https://maps.bts.dot.gov/MapGallery/
-  Population growth by county
-    https://maps.bts.dot.gov/arcgis/sharing/rest/content/items/46e3692713e6410f9cc07a003882ee68/data?token=
+- [Map gallery - Department of Transportation] (https://maps.bts.dot.gov/MapGallery/)
+  - [Population growth by county]
+  - (https://maps.bts.dot.gov/arcgis/sharing/rest/content/items/46e3692713e6410f9cc07a003882ee68/data?token=)
 
-Various data sets from 538 https://github.com/fivethirtyeight/data
-  Data organized by state
-    Alcohol consumption
-    Antiquities Act
-    Bad drivers
-    Hate crimes
-    Police killings   
-  Data organized by date/year
-    AHCA popularity
-    U.S. Births
-    Marriage
-    Police deaths
-    Police killings
-    Europe terrorism fatalities
-    World favorable view of US
-    World trust of US president
+- [Various data sets from 538] (https://github.com/fivethirtyeight/data)
+  - - Data organized by state
+    - Alcohol consumption
+    - Antiquities Act
+    - Bad drivers
+    - Hate crimes
+    - Police killings   
+  - Data organized by date/year
+    - AHCA popularity
+    - U.S. Births
+    - Marriage
+    - Police deaths
+    - Police killings
+    - Europe terrorism fatalities
+    - World favorable view of US
+    - World trust of US president
 
 
 
