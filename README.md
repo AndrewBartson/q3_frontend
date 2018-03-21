@@ -3,7 +3,7 @@ Project - Q3 G74
 ## Potential data sources -
 
 * Election data
-  * [Presidents Project](http://www.presidency.ucsb.edu/data.php).
+  * [Presidents Project](http://www.presidency.ucsb.edu/data.php)
   * [Atlas of Presidential elections](https://uselectionatlas.org/)
   * [Harvard election data archive](https://projects.iq.harvard.edu/eda/home)
   * [Elections stats - Library of Congress](http://www.loc.gov/rr/program/bib/elections/statistics.html)
