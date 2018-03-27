@@ -40,6 +40,7 @@ class DataMap extends React.Component {
       if (data.group === 6) { data.winner = 'D'; data.color = "#7fbfff";}
       if (data.group === 7) { data.winner = 'D'; data.color = "#3085d3";}
       if (data.group === 8) { data.winner = 'D'; data.color = "#0050aa";}
+
       object[data.code] = {
         value: data.group,
         margin: data.margin,

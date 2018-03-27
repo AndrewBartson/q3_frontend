@@ -7,6 +7,7 @@ import gop_image from "./images/gop.jpg";
 import states_summary from "./tempData";
 import Modal from "./components/Modal";
 
+
 class App extends Component {
   constructor(props){
     super(props)
@@ -18,6 +19,7 @@ class App extends Component {
         sortState: { key: 'regionName', direction: 'ASC' }
       }
     };
+
   }
 
   setModalProps = (newModalProps) => {
@@ -27,15 +29,18 @@ class App extends Component {
     }
 
   render() {
+    console.log("this.state");
     return (
       <div className="datamap-outer-conainer">
+
         <h1>
            <img src={gop_image} height="55" width="64" />
           U.S. Presidential Election 2016
           <img src={dem_image} height="55" width="64" />
           </h1>
-        <DataMap />
+        <DataMap setModalProps={this.setModalProps}/>
         <SummaryList />
+        <Modal modalProps={this.state.modalProps} />
       </div>
     );
   }
