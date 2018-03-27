@@ -4,13 +4,14 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import axios from "axios";
 import objectAssign from 'object-assign';
+import Modal from './Modal'
 
 class DataMap extends React.Component {
   constructor(props){
     super(props);
     this.datamap = null;
     this.state = {
-      states_summary: [] 
+      states_summary: []
     };
     this.getSummaryList();
   }
@@ -33,10 +34,10 @@ class DataMap extends React.Component {
       if (data.group === 6) temp = '#7fbfff'
       if (data.group === 7) temp = '#3085d3'
       if (data.group === 8) temp = '#0050aa'
-      object[data.code] = { 
-        value: data.group, 
-        margin: data.margin, 
-        electoral_votes: data.electoral_votes, 
+      object[data.code] = {
+        value: data.group,
+        margin: data.margin,
+        electoral_votes: data.electoral_votes,
         fillColor: temp }; //this.linearPalleteScale(data.margin) };
       return object;
     }, {});
@@ -44,6 +45,8 @@ class DataMap extends React.Component {
   }
 
   renderMap(states_summary){
+    console.log(this.props);
+    const clickFunction = this.props.setModalProps
     return new Datamap({
       element: ReactDOM.findDOMNode(this),
       scope: 'usa',
@@ -54,14 +57,23 @@ class DataMap extends React.Component {
         highlightFillColor: '#39ff14',
         popupTemplate: function(geography, data) {
           if (states_summary) {
-            return `<div class="hoverinfo"><strong>
-              ${geography.properties.name},  
-              ${data.electoral_votes} electoral votes</strong></div>`;
-          } else {
-            return `<div class="hoverinfo"><strong>
-              ${geography.properties.name}</strong></div>`;
-          }
+           return `<div class="hoverinfo"><strong>
+             ${geography.properties.name},
+             ${data.electoral_votes} Electoral Votes,
+             ${data.margin}% Margin of Victory </strong></div>`;
+         } else {
+           return `<div class="hoverinfo"><strong>
+             ${geography.properties.name}</strong></div>`;
+         }
         }
+      },
+      responsive: false,
+      done: (datamap) => {
+        datamap.svg.selectAll('.datamaps-subunit').on('click', function(geography) {
+          clickFunction({state: true,
+                         title: geography.properties.name,
+                         data: []});
+        });
       }
     });
   }
