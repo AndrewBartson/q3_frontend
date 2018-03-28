@@ -34,9 +34,9 @@ class App extends Component {
       <div className="datamap-outer-conainer">
 
         <h1>
-           <img src={gop_image} height="55" width="64" />
+           <img src={gop_image} alt="elephant icon" height="55" width="64" />
           U.S. Presidential Election 2016
-          <img src={dem_image} height="55" width="64" />
+          <img src={dem_image} alt="donkey icon" height="55" width="64" />
           </h1>
         <DataMap setModalProps={this.setModalProps}/>
         <SummaryList />

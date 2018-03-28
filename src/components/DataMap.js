@@ -30,7 +30,6 @@ class DataMap extends React.Component {
   }
 
   reduceData() {
-    let temp = "";
     const newData = this.state.states_summary.reduce((object, data) => {
       if (data.group === 1) { data.winner = 'R'; data.color = "#aa0129";}
       if (data.group === 2) { data.winner = 'R'; data.color = "#f64d52";}
