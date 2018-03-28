@@ -23,13 +23,10 @@ class App extends Component {
   }
 
   setModalProps = (newModalProps) => {
-    console.log(this);
       this.setState({ modalProps: newModalProps })
-      console.log("HEY WHATS UP");
     }
 
   render() {
-    console.log("this.state");
     return (
       <div className="datamap-outer-conainer">
 
@@ -37,7 +34,7 @@ class App extends Component {
            <img src={gop_image} alt="elephant icon" height="55" width="64" />
           U.S. Presidential Election 2016
           <img src={dem_image} alt="donkey icon" height="55" width="64" />
-          </h1>
+        </h1>
         <DataMap setModalProps={this.setModalProps}/>
         <SummaryList />
         <Modal modalProps={this.state.modalProps} />
@@ -47,4 +44,3 @@ class App extends Component {
 }
 
 export default App;
-

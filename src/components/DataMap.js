@@ -60,7 +60,7 @@ class DataMap extends React.Component {
     return new Datamap({
       element: ReactDOM.findDOMNode(this),
       scope: "usa",
-      data: this.reduceData(),
+      data: states_summary,
       geographyConfig: {
         borderWidth: 1.2,
         borderColor: "#fff",
@@ -70,7 +70,7 @@ class DataMap extends React.Component {
           let hoverDiv = `<div class="hoverinfo">
           <div class="box1 dude">
             <span id="fixTitle" class="label">${geography.properties.name}</span>
-          </div>          
+          </div>
           <div class="box3">
             <span class="label">Margin of Victory</span>
             <span class="info">${data.margin}%</span>
@@ -140,7 +140,7 @@ class DataMap extends React.Component {
           height: "700px"
         });
         this.datamap = this.renderMap("whatsup");
-      } 
+      }
       else if (this.currentScreenWidth() <= 1200) {
         d3.select("svg").remove();
         mapContainer.style({
