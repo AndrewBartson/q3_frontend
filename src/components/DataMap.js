@@ -2,7 +2,6 @@ import d3 from "d3";
 import Datamap from "datamaps/dist/datamaps.usa.min";
 import React from "react";
 import ReactDOM from "react-dom";
-import axios from "axios";
 import objectAssign from "object-assign";
 import Modal from './Modal'
 require('../images/dem.jpg')
@@ -11,14 +10,10 @@ class DataMap extends React.Component {
   constructor(props) {
     super(props);
     this.datamap = null;
-    this.state = {
-      states_summary: []
-    };
-    this.getSummaryList();
   }
 
   linearPalleteScale(value) {
-    const dataValues = this.state.states_summary.map(function(data) {
+    const dataValues = this.props.states_summary.map(function(data) {
       return data.margin;
     });
     const minVal = Math.min(...dataValues);
@@ -30,7 +25,7 @@ class DataMap extends React.Component {
   }
 
   reduceData() {
-    const newData = this.state.states_summary.reduce((object, data) => {
+    const newData = this.props.states_summary.reduce((object, data) => {
       if (data.group === 1) { data.winner = 'R'; data.color = "#aa0129";}
       if (data.group === 2) { data.winner = 'R'; data.color = "#f64d52";}
       if (data.group === 3) { data.winner = 'R'; data.color = "#fa8386";}
@@ -48,7 +43,8 @@ class DataMap extends React.Component {
       }; //this.linearPalleteScale(data.margin) };
       return object;
     }, {});
-    return objectAssign({}, this.state.states_summary, newData);
+    // return {...this.props.state_summary, ...newData}
+    return objectAssign({}, this.props.states_summary, newData);
   }
 
   hoverDiv(strings, state, elect_votes, margin) {
@@ -100,18 +96,6 @@ class DataMap extends React.Component {
     });
   }
 
-  getSummaryList() {
-    axios
-      .get("http://localhost:3002/summary")
-      .then(response => {
-        this.setState({
-          states_summary: response.data.states_summary
-        });
-        this.renderMap(this.reduceData());
-      })
-      .catch(console.error);
-  }
-
   currentScreenWidth() {
     return (
       window.innerWidth ||
@@ -121,16 +105,8 @@ class DataMap extends React.Component {
   }
   componentDidMount() {
     const mapContainer = d3.select("#datamap-container");
-    const initialScreenWidth = this.currentScreenWidth();
-    const containerWidth =
-      initialScreenWidth < 1200
-        ? { width: initialScreenWidth + "px",
-            height: initialScreenWidth * 0.5625 + "px" }:
-          { width: "1200px", height: "700px" };
 
-    mapContainer.style(containerWidth);
-    //this.datamap = this.renderMap(this.state.states_summary);
-    window.addEventListener("resize", () => {
+    function setupSizing() {
       const currentScreenWidth = this.currentScreenWidth();
       const mapContainerWidth = mapContainer.style("width");
       if (this.currentScreenWidth() > 1200 && mapContainerWidth !== "1200px") {
@@ -149,7 +125,9 @@ class DataMap extends React.Component {
         });
         this.datamap = this.renderMap(this.reduceData());
       }
-    });
+    }
+    setupSizing.call(this);
+    window.addEventListener("resize",() => setupSizing.call(this));
   }
   componentDidUpdate() {
     //this.datamap.updateChoropleth(this.state.states_summary);

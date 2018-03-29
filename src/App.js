@@ -6,6 +6,10 @@ import dem_image from "./images/dem.jpg";
 import gop_image from "./images/gop.jpg";
 import states_summary from "./tempData";
 import Modal from "./components/Modal";
+import axios from "axios";
+
+
+
 
 
 class App extends Component {
@@ -13,14 +17,33 @@ class App extends Component {
     super(props)
 
     this.state = {
+      states_summary: [],
       modalProps: {
         regionData: states_summary,
         emptyRegions: [],
-        sortState: { key: 'regionName', direction: 'ASC' }
+        sortState: { key: 'regionName', direction: 'ASC' },
       }
     };
 
   }
+
+  componentDidMount() {
+    this.getSummaryList()
+  }
+
+  getSummaryList() {
+    axios
+      .get("http://localhost:3002/summary")
+      .then(response => {
+        debugger
+        console.log(response)
+        this.setState({
+          states_summary: response.data
+        });
+      })
+      .catch(console.error);
+  }
+  
 
   setModalProps = (newModalProps) => {
       this.setState({ modalProps: newModalProps })
@@ -35,8 +58,8 @@ class App extends Component {
           U.S. Presidential Election 2016
           <img src={dem_image} alt="donkey icon" height="55" width="64" />
         </h1>
-        <DataMap setModalProps={this.setModalProps}/>
-        <SummaryList />
+        <DataMap states_summary={this.state.states_summary} setModalProps={this.setModalProps}/>
+        <SummaryList states_summary={this.state.states_summary} />
         <Modal modalProps={this.state.modalProps} />
       </div>
     );
