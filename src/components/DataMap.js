@@ -139,7 +139,7 @@ class DataMap extends React.Component {
           width: "1200px",
           height: "700px"
         });
-        this.datamap = this.renderMap("whatsup");
+        this.datamap = this.renderMap(this.reduceData());
       }
       else if (this.currentScreenWidth() <= 1200) {
         d3.select("svg").remove();
@@ -147,7 +147,7 @@ class DataMap extends React.Component {
           width: currentScreenWidth + "px",
           height: currentScreenWidth * 0.5625 + "px"
         });
-        this.datamap = this.renderMap("heelo");
+        this.datamap = this.renderMap(this.reduceData());
       }
     });
   }

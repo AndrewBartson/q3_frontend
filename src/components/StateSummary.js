@@ -15,3 +15,5 @@ const StateSummary = ({regionName, code, electoral_votes, group, margin, value, 
 export default StateSummary;
 
 
+// Compare git hub with DataMap.js and App.js to make sure 
+// everthing matches, no surprises!
