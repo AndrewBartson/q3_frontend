@@ -5,15 +5,11 @@ const StateSummary = ({regionName, code, electoral_votes, group, margin, value, 
 <div className='data_row'>
   <h3 className="state_name">{regionName}</h3>
   <div>
-    <div className="data_spot">Margin of victory  <span>{margin}%</span></div> 
-    <div className="data_spot">Electoral votes <span>{electoral_votes}</span></div> 
+    <div className="data_spot">Margin of victory  <span>{margin}%</span></div>
+    <div className="data_spot">Electoral votes <span>{electoral_votes}</span></div>
   </div>
 </div>
   );
 };
 
 export default StateSummary;
-
-
-// Compare git hub with DataMap.js and App.js to make sure 
-// everthing matches, no surprises!

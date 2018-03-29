@@ -12,18 +12,6 @@ class DataMap extends React.Component {
     this.datamap = null;
   }
 
-  linearPalleteScale(value) {
-    const dataValues = this.props.states_summary.map(function(data) {
-      return data.margin;
-    });
-    const minVal = Math.min(...dataValues);
-    const maxVal = Math.max(...dataValues);
-    return d3.scale
-      .linear()
-      .domain([minVal, maxVal])
-      .range(["#f00", "#00f"])(value);
-  }
-
   reduceData() {
     const newData = this.props.states_summary.reduce((object, data) => {
       if (data.group === 1) { data.winner = 'R'; data.color = "#aa0129";}
@@ -40,15 +28,11 @@ class DataMap extends React.Component {
         margin: data.margin,
         electoral_votes: data.electoral_votes,
         fillColor: data.color
-      }; //this.linearPalleteScale(data.margin) };
+      };
       return object;
     }, {});
-    // return {...this.props.state_summary, ...newData}
-    return objectAssign({}, this.props.states_summary, newData);
-  }
 
-  hoverDiv(strings, state, elect_votes, margin) {
-    console.log('testing testing')
+    return objectAssign({}, this.props.states_summary, newData);
   }
 
   renderMap(states_summary) {
@@ -64,14 +48,14 @@ class DataMap extends React.Component {
         popupTemplate: function(geography, data) {
 
           let hoverDiv = `<div class="hoverinfo">
-          <div class="box1 dude">
+          <div class="dude">
             <span id="fixTitle" class="label">${geography.properties.name}</span>
           </div>
-          <div class="box3">
+          <div >
             <span class="label">Margin of Victory</span>
             <span class="info">${data.margin}%</span>
           </div>
-          <div class="box4">
+          <div>
             <span class="label">Electoral Votes</span>
             <span class="info">${data.electoral_votes}</span>
           </div>
@@ -129,9 +113,7 @@ class DataMap extends React.Component {
     setupSizing.call(this);
     window.addEventListener("resize",() => setupSizing.call(this));
   }
-  componentDidUpdate() {
-    //this.datamap.updateChoropleth(this.state.states_summary);
-  }
+
   componentWillUnmount() {
     d3.select("svg").remove();
   }

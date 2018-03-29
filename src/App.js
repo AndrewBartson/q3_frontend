@@ -8,10 +8,6 @@ import states_summary from "./tempData";
 import Modal from "./components/Modal";
 import axios from "axios";
 
-
-
-
-
 class App extends Component {
   constructor(props){
     super(props)
@@ -24,7 +20,6 @@ class App extends Component {
         sortState: { key: 'regionName', direction: 'ASC' },
       }
     };
-
   }
 
   componentDidMount() {
@@ -35,7 +30,6 @@ class App extends Component {
     axios
       .get("http://localhost:3002/summary")
       .then(response => {
-        debugger
         console.log(response)
         this.setState({
           states_summary: response.data
@@ -43,7 +37,6 @@ class App extends Component {
       })
       .catch(console.error);
   }
-  
 
   setModalProps = (newModalProps) => {
       this.setState({ modalProps: newModalProps })
@@ -52,7 +45,6 @@ class App extends Component {
   render() {
     return (
       <div className="datamap-outer-conainer">
-
         <h1>
            <img src={gop_image} alt="elephant icon" height="55" width="64" />
           U.S. Presidential Election 2016
