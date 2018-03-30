@@ -118,16 +118,18 @@ class DataMap extends React.Component {
     const mapContainer = d3.select("#datamap-container");
     const currentScreenWidth = this.currentScreenWidth();
     const mapContainerWidth = mapContainer.style("width");
-    if (this.currentScreenWidth() > 1200 && mapContainerWidth !== "1200px") {
+    if (this.currentScreenWidth() > 1100) {
       d3.select("svg").remove();
       mapContainer.style({
-        width: "1200px",
+        width: "1100px",
         height: "700px"
       });
       this.datamap = this.renderMap(this.reduceData());
     }
-    else if (this.currentScreenWidth() <= 1200) {
+    else if (this.currentScreenWidth() <= 1100) {
       d3.select("svg").remove();
+      console.log("width: " + currentScreenWidth + "px")
+      console.log("height: " + currentScreenWidth * 0.5625 + "px")
       mapContainer.style({
         width: currentScreenWidth + "px",
         height: currentScreenWidth * 0.5625 + "px"

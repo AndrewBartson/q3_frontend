@@ -10,20 +10,18 @@ export default class Modal extends React.Component {
     if(this.props.modalProps.candidates) {
         cleanedData = this.cleanData(this.props.modalProps.candidates);
     }
-    console.log("CLEANED DATA")
-    console.log(cleanedData);
-    console.log("CURRENT STATE OF MODAL: ")
-    console.log(this.props.modalProps);
+  
     if(cleanedData) {
       return (
         <div id="modal">
           <div id="winner" className="details">
+            <h1>State: {cleanedData.winner.state}</h1>
             <h2>Party: {cleanedData.winner.party} </h2>
             <h3>Winner: {cleanedData.winner.presidentialCandidate} & {cleanedData.winner.vicePresidentialCandidate}</h3>
           </div>
           <div id="runnerUp" className="details">
             <h2>Party: {cleanedData.runnerUp.party} </h2>
-            <h3>Winner: {cleanedData.runnerUp.presidentialCandidate} & {cleanedData.winner.vicePresidentialCandidate}</h3>
+            <h3>Runner Up: {cleanedData.runnerUp.presidentialCandidate} & {cleanedData.winner.vicePresidentialCandidate}</h3>
           </div>
           <div id="losers" className="details">
             <h3>Others:</h3>
