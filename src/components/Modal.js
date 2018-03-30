@@ -1,4 +1,5 @@
 import React from 'react';
+import "../css/table.css"
 
 export default class Modal extends React.Component {
   constructor(props){
@@ -10,26 +11,29 @@ export default class Modal extends React.Component {
     if(this.props.modalProps.candidates) {
         cleanedData = this.cleanData(this.props.modalProps.candidates);
     }
-  
+
     if(cleanedData) {
       return (
         <div id="modal">
+          <div id="state" className="details"><h1>{cleanedData.winner.state}</h1></div>
           <div id="winner" className="details">
-            <h1>State: {cleanedData.winner.state}</h1>
-            <h2>Party: {cleanedData.winner.party} </h2>
-            <h3>Winner: {cleanedData.winner.presidentialCandidate} & {cleanedData.winner.vicePresidentialCandidate}</h3>
+
+            <h2>{cleanedData.winner.party} </h2>
+            <h3>Winner: {cleanedData.winner.presidentialCandidate} // {cleanedData.winner.vicePresidentialCandidate}</h3>
           </div>
           <div id="runnerUp" className="details">
-            <h2>Party: {cleanedData.runnerUp.party} </h2>
-            <h3>Runner Up: {cleanedData.runnerUp.presidentialCandidate} & {cleanedData.winner.vicePresidentialCandidate}</h3>
+            <h2>{cleanedData.runnerUp.party} </h2>
+            <h3>Runner Up: {cleanedData.runnerUp.presidentialCandidate} // {cleanedData.winner.vicePresidentialCandidate}</h3>
           </div>
           <div id="losers" className="details">
             <h3>Others:</h3>
+            <ul>
             {
               cleanedData.losers.map((row) => {
-                return <p>{row.presidentialCandidate} -- Popular Vote Percentage: {row.popularVotePercentage}</p>
+                return <li>{row.presidentialCandidate} -- Popular Vote %: {row.popularVotePercentage}</li>
               })
             }
+            </ul>
           </div>
         </div>
       );
@@ -38,7 +42,6 @@ export default class Modal extends React.Component {
     }
   }
   cleanData(dataArray) {
-    // Create a new object that has winner details, runner up details, and combined loser details.
     let winnerObj = dataArray.filter(row => row.winner)[0];
     let runnerUp;
     if(winnerObj.party == 'Republican') {
