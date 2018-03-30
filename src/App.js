@@ -4,7 +4,6 @@ import SummaryList from "./components/SummaryList";
 import "./css/table.css";
 import dem_image from "./images/dem.jpg";
 import gop_image from "./images/gop.jpg";
-import states_summary from "./tempData";
 import Modal from "./components/Modal";
 import axios from "axios";
 
@@ -14,13 +13,10 @@ class App extends Component {
 
     this.state = {
       states_summary: [],
-      modalProps: {
-        regionData: states_summary,
-        emptyRegions: [],
-        sortState: { key: 'regionName', direction: 'ASC' },
+      modalProps: {}
       }
     };
-  }
+  
 
   componentDidMount() {
     this.getSummaryList()

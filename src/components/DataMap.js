@@ -4,6 +4,8 @@ import React from "react";
 import ReactDOM from "react-dom";
 import objectAssign from "object-assign";
 import Modal from './Modal'
+import axios from 'axios'
+
 require('../images/dem.jpg')
 
 class DataMap extends React.Component {
@@ -72,10 +74,15 @@ class DataMap extends React.Component {
     responsive: false,
       done: (datamap) => {
         datamap.svg.selectAll('.datamaps-subunit').on('click', function(geography) {
-          clickFunction({state: true,
-                         title: geography.properties.name,
-                         data: []});
-        });
+          let stateCode = geography.id;
+          let route = `modal_data/${stateCode}`
+          axios
+            .get("http://localhost:3002/" + route)
+            .then(response => {
+              clickFunction(response.data);
+            })
+            .catch(console.error);
+        })
       }
     });
   }
@@ -88,30 +95,13 @@ class DataMap extends React.Component {
     );
   }
   componentDidMount() {
-    const mapContainer = d3.select("#datamap-container");
+    this.setupSizing.call(this);
+    window.addEventListener("resize",() => this.setupSizing.call(this));
+  }
 
-    function setupSizing() {
-      const currentScreenWidth = this.currentScreenWidth();
-      const mapContainerWidth = mapContainer.style("width");
-      if (this.currentScreenWidth() > 1200 && mapContainerWidth !== "1200px") {
-        d3.select("svg").remove();
-        mapContainer.style({
-          width: "1200px",
-          height: "700px"
-        });
-        this.datamap = this.renderMap(this.reduceData());
-      }
-      else if (this.currentScreenWidth() <= 1200) {
-        d3.select("svg").remove();
-        mapContainer.style({
-          width: currentScreenWidth + "px",
-          height: currentScreenWidth * 0.5625 + "px"
-        });
-        this.datamap = this.renderMap(this.reduceData());
-      }
-    }
-    setupSizing.call(this);
-    window.addEventListener("resize",() => setupSizing.call(this));
+  componentDidUpdate() {
+    this.setupSizing.call(this);
+    window.addEventListener("resize",() => this.setupSizing.call(this));
   }
 
   componentWillUnmount() {
@@ -122,6 +112,28 @@ class DataMap extends React.Component {
     return (
       <div id="datamap-container"></div>
     );
+  }
+
+  setupSizing() {
+    const mapContainer = d3.select("#datamap-container");
+    const currentScreenWidth = this.currentScreenWidth();
+    const mapContainerWidth = mapContainer.style("width");
+    if (this.currentScreenWidth() > 1200 && mapContainerWidth !== "1200px") {
+      d3.select("svg").remove();
+      mapContainer.style({
+        width: "1200px",
+        height: "700px"
+      });
+      this.datamap = this.renderMap(this.reduceData());
+    }
+    else if (this.currentScreenWidth() <= 1200) {
+      d3.select("svg").remove();
+      mapContainer.style({
+        width: currentScreenWidth + "px",
+        height: currentScreenWidth * 0.5625 + "px"
+      });
+      this.datamap = this.renderMap(this.reduceData());
+    }
   }
 }
 
