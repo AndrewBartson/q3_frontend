@@ -38,6 +38,8 @@ h1 {
   margin-right: 0;
 }
 
+
+
 #losers {
   display:flex;
   font-weight: bold;
@@ -47,7 +49,11 @@ h1 {
 }
 
 .data_row span {
-
+  display:flex;
+  font-weight: bold;
+  margin-right: 0.25rem;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  font-size: larger;
 }
 
 .data_spot {

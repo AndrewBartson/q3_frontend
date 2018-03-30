@@ -17,13 +17,12 @@ export default class Modal extends React.Component {
         <div id="modal">
           <div id="state" className="details"><h1>{cleanedData.winner.state}</h1></div>
           <div id="winner" className="details">
-
             <h2>{cleanedData.winner.party} </h2>
-            <h3>Winner: {cleanedData.winner.presidentialCandidate} // {cleanedData.winner.vicePresidentialCandidate}</h3>
+            <h3>Winner: {cleanedData.winner.presidentialCandidate} / {cleanedData.winner.vicePresidentialCandidate}</h3>
           </div>
           <div id="runnerUp" className="details">
             <h2>{cleanedData.runnerUp.party} </h2>
-            <h3>Runner Up: {cleanedData.runnerUp.presidentialCandidate} // {cleanedData.winner.vicePresidentialCandidate}</h3>
+            <h3>Runner Up: {cleanedData.runnerUp.presidentialCandidate} / {cleanedData.winner.vicePresidentialCandidate}</h3>
           </div>
           <div id="losers" className="details">
             <h3>Others:</h3>
