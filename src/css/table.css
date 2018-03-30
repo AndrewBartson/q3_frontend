@@ -25,19 +25,15 @@ h1 {
   align-items: center;
   border: 1px solid;
   margin-top: 1em;
-  width: 900px;
-  padding-left: 30px;
+  width: 800px;
   height: 90px;
   line-height: 30px;
+  padding-left: 40px;
 }
 
 .details * {
-  display: inline-block;
   margin: 1rem;
-  margin-right: 0;
 }
-
-
 
 #losers {
   display:flex;
@@ -45,6 +41,7 @@ h1 {
   margin-right: 0.25rem;
   font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
   font-size: larger;
+  height: 200px;
 }
 
 .data_row span {
@@ -106,3 +103,46 @@ span.info {
   align-self: top;
   min-width: 620px;
 }
+
+#state, #losers, #runnerUp, #winner {
+  margin: auto;
+  margin-bottom: 15px;
+}
+
+#modal {
+  display: grid;
+  margin: auto;
+}
+
+#runnerUp, #winner {
+  display: grid;
+  grid-template-columns: 3fr 8fr;
+}
+
+#losers {
+  display: grid;
+  grid-template-columns: 3fr 9fr;
+} 
+
+#losers h3 {
+  font-size: 29px;
+  margin-left: 30px;
+}
+
+#losers ul {
+  list-style-type: none;
+  font-size: 20px;
+  font-family: Helvetica, sans-serif;
+  font-weight: 500;
+}
+
+#losers li {
+  display: grid;
+  grid-template-columns: 2fr 2fr 1fr 0.5fr;
+
+}
+
+#losers li span {
+  margin: 0;
+}
+

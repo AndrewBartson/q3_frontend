@@ -1,6 +1,5 @@
 import React, { Component } from "react";
 import DataMap from "./components/DataMap";
-import SummaryList from "./components/SummaryList";
 import "./css/table.css";
 import dem_image from "./images/dem2.jpg";
 import gop_image from "./images/gop2.jpg";
@@ -49,7 +48,6 @@ class App extends Component {
             alt="donkey icon" /></div>         
         </div>
         <DataMap states_summary={this.state.states_summary} setModalProps={this.setModalProps}/>
-        <SummaryList states_summary={this.state.states_summary} />
         <Modal modalProps={this.state.modalProps} />
       </div>
     );

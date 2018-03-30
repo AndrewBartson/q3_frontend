@@ -6,7 +6,7 @@ import objectAssign from "object-assign";
 import Modal from './Modal'
 import axios from 'axios'
 
-require('../images/dem.jpg')
+
 
 class DataMap extends React.Component {
   constructor(props) {
@@ -128,8 +128,8 @@ class DataMap extends React.Component {
     }
     else if (this.currentScreenWidth() <= 1100) {
       d3.select("svg").remove();
-      console.log("width: " + currentScreenWidth + "px")
-      console.log("height: " + currentScreenWidth * 0.5625 + "px")
+      //console.log("width: " + currentScreenWidth + "px")
+      //console.log("height: " + currentScreenWidth * 0.5625 + "px")
       mapContainer.style({
         width: currentScreenWidth + "px",
         height: currentScreenWidth * 0.5625 + "px"

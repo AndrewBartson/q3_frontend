@@ -22,14 +22,14 @@ export default class Modal extends React.Component {
           </div>
           <div id="runnerUp" className="details">
             <h2>{cleanedData.runnerUp.party} </h2>
-            <h3>Runner Up: {cleanedData.runnerUp.presidentialCandidate} / {cleanedData.winner.vicePresidentialCandidate}</h3>
+            <h3>Runner Up: {cleanedData.runnerUp.presidentialCandidate} / {cleanedData.runnerUp.vicePresidentialCandidate}</h3>
           </div>
           <div id="losers" className="details">
-            <h3>Others:</h3>
+            <h3>Others</h3>
             <ul>
             {
               cleanedData.losers.map((row) => {
-                return <li>{row.presidentialCandidate} -- Popular Vote %: {row.popularVotePercentage}</li>
+                return <li><span>{row.presidentialCandidate}</span> <span>Popular Vote </span><span>{row.popularVotePercentage} %</span><span></span></li>
               })
             }
             </ul>
