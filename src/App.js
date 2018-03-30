@@ -2,8 +2,8 @@ import React, { Component } from "react";
 import DataMap from "./components/DataMap";
 import SummaryList from "./components/SummaryList";
 import "./css/table.css";
-import dem_image from "./images/dem.jpg";
-import gop_image from "./images/gop.jpg";
+import dem_image from "./images/dem2.jpg";
+import gop_image from "./images/gop2.jpg";
 import Modal from "./components/Modal";
 import axios from "axios";
 
@@ -41,11 +41,13 @@ class App extends Component {
   render() {
     return (
       <div className="datamap-outer-conainer">
-        <h1>
-           <img src={gop_image} alt="elephant icon" height="55" width="64" />
-          U.S. Presidential Election 2016
-          <img src={dem_image} alt="donkey icon" height="55" width="64" />
-        </h1>
+      <div className="banner">
+        <div id="gop" className="side_box"><img src={dem_image}
+             alt="elephant icon" /></div>
+          <div className="title_box"><h1>U.S. Presidential Election 2016</h1></div>
+          <div className="side_box"><img src={gop_image} 
+            alt="donkey icon" /></div>         
+        </div>
         <DataMap states_summary={this.state.states_summary} setModalProps={this.setModalProps}/>
         <SummaryList states_summary={this.state.states_summary} />
         <Modal modalProps={this.state.modalProps} />

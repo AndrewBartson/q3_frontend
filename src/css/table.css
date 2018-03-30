@@ -10,7 +10,6 @@ h1 {
   letter-spacing: -1px;
   margin-top: 15px;
   text-align:center;
-  margin-bottom: -20px;
 }
 
 .data_nest {
@@ -70,4 +69,29 @@ span.info {
 
 .dude {
   text-align: center;
+}
+
+.banner {
+  display: grid;
+  grid-template-columns: 1fr 4fr 1fr;
+  justify-items: center;
+  margin-bottom: -40px;
+}
+
+.side_box {
+  display: grid;
+  align-items: center;
+  padding: 18px;
+  margin-bottom: -40px;
+}
+
+.side_box img {
+  max-width: 100px;
+  min-width: 30px;
+  width: 100%; 
+}
+
+.title_box {
+  align-self: top;
+  min-width: 620px;
 }
